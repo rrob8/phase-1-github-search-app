@@ -142,7 +142,13 @@ fetch(`https://api.github.com/users/${login}/repos`, {
 .then(response => response.json())
 .then(data => {
    console.log(data)
-   
+   if (data.length < 1) {
+    console.log('repo list is empty')
+    const repos_li = document.createElement('li')
+    repos_li.textContent = "User has no repos =("
+    repos.appendChild(repos_li)
+    
+   }
    for (repo of listOfRepos) {
     repo.textContent = ''
 }
@@ -158,7 +164,9 @@ fetch(`https://api.github.com/users/${login}/repos`, {
    })
 })
    
+function repoMessage () {
 
+}
     
     
     
